@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITVE | Future-Ready Technical Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-['Inter'] antialiased overflow-hidden">
+
+    <!-- Header Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-12 pointer-events-none">
+        <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 px-6 py-3 pointer-events-auto">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('hero')">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-800">ITVE <span class="text-blue-600">Academy</span></span>
+            </div>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#hero" class="nav-link text-sm font-semibold active-nav" data-section="hero">Home</a>
+                <a href="#about" class="nav-link text-sm font-semibold text-slate-500" data-section="about">About</a>
+                <a href="#programs" class="nav-link text-sm font-semibold text-slate-500" data-section="programs">Programs</a>
+                <a href="#benefits" class="nav-link text-sm font-semibold text-slate-500" data-section="benefits">Benefits</a>
+                <button onclick="scrollToSection('apply')" class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition-all shadow-md active:scale-95">Apply Now</button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-slate-800 pointer-events-auto p-2" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 bg-white rounded-2xl shadow-2xl p-6 border border-slate-100 flex-col gap-4 pointer-events-auto">
+            <a href="#hero" class="text-lg font-medium py-2 border-b border-slate-50" onclick="closeMobileMenu(); scrollToSection('hero')">Home</a>
+            <a href="#about" class="text-lg font-medium py-2 border-b border-slate-50" onclick="closeMobileMenu(); scrollToSection('about')">About</a>
+            <a href="#programs" class="text-lg font-medium py-2 border-b border-slate-50" onclick="closeMobileMenu(); scrollToSection('programs')">Programs</a>
+            <a href="#benefits" class="text-lg font-medium py-2 border-b border-slate-50" onclick="closeMobileMenu(); scrollToSection('benefits')">Benefits</a>
+            <button onclick="closeMobileMenu(); scrollToSection('apply')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold mt-2">Apply Now</button>
+        </div>
+    </nav>
+
+    <!-- Side Pagination Dots -->
+    <div class="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-6">
+        <div class="dot active" onclick="scrollToSection('hero')" data-section="hero"><span>Home</span></div>
+        <div class="dot" onclick="scrollToSection('about')" data-section="about"><span>About Us</span></div>
+        <div class="dot" onclick="scrollToSection('programs')" data-section="programs"><span>Programs</span></div>
+        <div class="dot" onclick="scrollToSection('benefits')" data-section="benefits"><span>Why Us</span></div>
+        <div class="dot" onclick="scrollToSection('apply')" data-section="apply"><span>Admissions</span></div>
+    </div>
+
+   
+
+    <!-- Main Content (Snap Container) -->
+    <main id="main-container" class="snap-container">
+        
+        <!-- Section 1: Hero -->
+        <section id="hero" class="snap-section bg-slate-900 flex items-center justify-center px-6">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
+                <div class="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
+                <div class="space-y-6 md:space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs md:text-sm font-bold uppercase tracking-wider mx-auto lg:mx-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        Admissions Open: Fall 2024
+                    </div>
+                    <h1 class="text-4xl md:text-7xl font-extrabold text-white leading-[1.1]">
+                        Crafting the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Next Generation</span> of Skills
+                    </h1>
+                    <p class="text-slate-300 text-lg md:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        ITVE is Pakistan's premier institute for vocational mastery. We transform talent into industry-standard expertise.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <button onclick="scrollToSection('programs')" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/30 active:scale-95">Explore Courses</button>
+                        <button onclick="scrollToSection('apply')" class="bg-slate-800 text-slate-200 border border-slate-700 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-700 transition-all active:scale-95">Apply Now</button>
+                    </div>
+                </div>
+                <div class="hidden lg:block relative">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800" class="rounded-[3rem] border-8 border-slate-800 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700 object-cover" alt="Technical Skill Training">
+                    <div class="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-2xl flex items-center gap-4">
+                        <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Placement Success</p>
+                            <p class="text-3xl font-bold text-slate-900">98.4%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/20 animate-bounce cursor-pointer" onclick="scrollToSection('about')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>
+            </div>
+        </section>
+
+        <!-- Section 2: About -->
+        <section id="about" class="snap-section bg-white flex items-center justify-center px-6 py-20">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full">
+                <div class="relative order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=500" class="rounded-3xl shadow-lg mt-12 h-48 md:h-96 object-cover" alt="Students">
+                    </div>
+                </div>
+                <div class="space-y-6 order-1 lg:order-2">
+                    <span class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-bold uppercase tracking-widest">Our Legacy</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">Empowering Pakistan's Technical Future.</h2>
+                    <p class="text-slate-600 text-lg md:text-xl leading-relaxed">The Institute of Technical & Vocational Education (ITVE) was established with a singular vision: to provide high-quality, industry-focused training that empowers students for global careers.</p>
+                    <div class="grid grid-cols-2 gap-8 pt-6 border-t border-slate-100">
+                        <div>
+                            <h4 class="text-4xl font-extrabold text-blue-600">25+</h4>
+                            <p class="text-slate-500 font-medium">Modern Courses</p>
+                        </div>
+                        <div>
+                            <h4 class="text-4xl font-extrabold text-blue-600">15k+</h4>
+                            <p class="text-slate-500 font-medium">Graduates Worldwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Programs -->
+        <section id="programs" class="snap-section bg-slate-50 flex flex-col justify-center px-6">
+            <div class="max-w-7xl mx-auto w-full h-full py-20 flex flex-col">
+                <div class="text-center mb-12 flex-shrink-0">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Leading Programs</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto">Explore our diverse range of technical and vocational courses designed for the modern job market.</p>
+                </div>
+                <div class="flex-1 overflow-y-auto custom-scrollbar pr-2 pb-16">
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group">
+                            <div class="h-52 bg-slate-100 rounded-3xl mb-6 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="CS">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-bold text-blue-600 uppercase">IT Sector</div>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Computer Science</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6">From software engineering to network security, master the tools of the digital age.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <span class="text-xs font-bold text-slate-400">3 Years DAE</span>
+                                <button class="text-blue-600 font-bold text-sm">View Details →</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group">
+                            <div class="h-52 bg-slate-100 rounded-3xl mb-6 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Electrical">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-bold text-blue-600 uppercase">Engineering</div>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Electrical Engineering</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6">Learn electrical systems, electronics, and industrial automation in modern labs.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <span class="text-xs font-bold text-slate-400">3 Years DAE</span>
+                                <button class="text-blue-600 font-bold text-sm">View Details →</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group">
+                            <div class="h-52 bg-slate-100 rounded-3xl mb-6 overflow-hidden relative">
+                                <img src="graphics.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Design">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-bold text-blue-600 uppercase">Creative Art</div>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Graphic & UI/UX Design</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6">Unleash your creativity with professional design principles and modern tools.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <span class="text-xs font-bold text-slate-400">1 Year Diploma</span>
+                                <button class="text-blue-600 font-bold text-sm">View Details →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Benefits -->
+        <section id="benefits" class="snap-section bg-slate-900 text-white flex items-center justify-center px-6">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full">
+                <div class="space-y-8">
+                    <span class="text-blue-400 font-bold uppercase tracking-widest text-sm">Why Students Choose ITVE</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">The ITVE Advantage.</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-6 p-6 rounded-[2rem] bg-slate-800/50 border border-slate-700/30">
+                            <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-400 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">State Certification</h4>
+                                <p class="text-slate-400 text-sm">All our programs are fully recognized and accredited by official boards.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 p-6 rounded-[2rem] bg-slate-800/50 border border-slate-700/30">
+                            <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-400 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Expert Instruction</h4>
+                                <p class="text-slate-400 text-sm">Learn from faculty members with deep roots in their respective industries.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 p-6 rounded-[2rem] bg-slate-800/50 border border-slate-700/30">
+                            <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-400 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Global Placements</h4>
+                                <p class="text-slate-400 text-sm">Our alumni work in leading firms across Pakistan and the Middle East.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex flex-col gap-6">
+                    <div class="bg-blue-600 p-12 rounded-[3rem] text-center shadow-2xl shadow-blue-500/20">
+                        <h4 class="text-6xl font-black mb-2">95%</h4>
+                        <p class="text-blue-100 font-bold uppercase tracking-widest text-xs">Practical Learning</p>
+                    </div>
+                    <div class="bg-slate-800 p-12 rounded-[3rem] text-center border border-slate-700">
+                        <h4 class="text-6xl font-black mb-2 text-blue-500">24/7</h4>
+                        <p class="text-slate-400 font-bold uppercase tracking-widest text-xs">Support Access</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Admissions/Apply -->
+        <section id="apply" class="snap-section bg-white flex flex-col justify-center px-6 overflow-y-auto custom-scrollbar">
+            <div class="max-w-7xl mx-auto py-24 w-full flex-1 flex flex-col justify-center">
+                <div class="bg-blue-600 rounded-[3rem] p-10 md:p-20 flex flex-col lg:flex-row gap-12 items-center justify-between text-white mb-20 shadow-[0_25px_60px_-15px_rgba(37,99,235,0.4)]">
+                    <div class="space-y-6 text-center lg:text-left">
+                        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Join the Next <br>Batch Today</h2>
+                        <p class="text-blue-100 text-lg opacity-90 max-w-md">Limited seats available for the upcoming session. Secure your professional future now.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <button class="bg-white text-blue-600 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-blue-50 transition-all shadow-xl active:scale-95">Apply Online</button>
+                    </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-16 text-slate-600 pb-12">
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-bold text-slate-900">Get in Touch</h3>
+                        <p class="text-lg">Have questions about eligibility or course fees? Visit us or send a message.</p>
+                        <div class="space-y-5 font-medium text-slate-800">
+                            <p class="flex items-center gap-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Sector H-8, Education Road, Islamabad</p>
+                            <p class="flex items-center gap-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +92 51 1234567</p>
+                            <p class="flex items-center gap-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> admissions@itve.pk</p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <form id="admission-form" class="grid sm:grid-cols-2 gap-8 bg-slate-50 p-10 rounded-[3rem] border border-slate-100 shadow-sm">
+                            <div class="space-y-3">
+                                <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Full Name</label>
+                                <input required type="text" placeholder="e.g. Ali Khan" class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 bg-white transition-all">
+                            </div>
+                            <div class="space-y-3">
+                                <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Email Address</label>
+                                <input required type="email" placeholder="ali@example.com" class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 bg-white transition-all">
+                            </div>
+                            <div class="sm:col-span-2 space-y-3">
+                                <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Preferred Program</label>
+                                <select required class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 bg-white transition-all appearance-none">
+                                    <option value="">Select Course</option>
+                                    <option>Computer Science (DAE)</option>
+                                    <option>Electrical Technology (DAE)</option>
+                                    <option>Mechanical Technology (DAE)</option>
+                                    <option>Graphic Design (Diploma)</option>
+                                    <option>Nursing Assistant (Vocational)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="sm:col-span-2 bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all active:scale-95 shadow-xl">Submit Application Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 shrink-0">
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xs">IT</div>
+                        <span class="font-bold tracking-tight">ITVE ACADEMY ISLAMABAD</span>
+                    </div>
+                    <div class="flex gap-10 text-xs text-slate-400 font-bold uppercase tracking-widest">
+                        <a href="#" class="hover:text-blue-400 transition-colors">Verify Certificate</a>
+                        <a href="#" class="hover:text-blue-400 transition-colors">LMS Login</a>
+                        <a href="#" class="hover:text-blue-400 transition-colors">Careers</a>
+                    </div>
+                    <p class="text-slate-500 text-xs font-medium">© 2024 Institute of Technical & Vocational Education.</p>
+                </div>
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- Project Logic -->
+    <script type="module" src="main.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
